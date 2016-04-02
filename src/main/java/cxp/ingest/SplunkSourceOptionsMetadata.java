@@ -21,6 +21,10 @@ public class SplunkSourceOptionsMetadata {
 
     private String savedSearch;
 
+    private int fixedDelay = 5;
+
+    private String fixedDelayUnit = "HOURS";
+
     @NotBlank
     public String getHost() {
         return host;
@@ -79,5 +83,25 @@ public class SplunkSourceOptionsMetadata {
     @ModuleOption("the name of the saved search in Splunk")
     public void setSavedSearch(String savedSearch) {
         this.savedSearch = savedSearch;
+    }
+
+    @Range(min = 0, max = 60)
+    public int getFixedDelay() {
+        return fixedDelay;
+    }
+
+    @ModuleOption("the fixed delay polling interval")
+    public void setFixedDelay(int fixedDelay) {
+        this.fixedDelay = fixedDelay;
+    }
+
+    @NotBlank
+    public String getFixedDelayUnit() {
+        return fixedDelayUnit;
+    }
+
+    @ModuleOption("the unit of time for the polling interval")
+    public void setFixedDelayUnit(String fixedDelayUnit) {
+        this.fixedDelayUnit = fixedDelayUnit;
     }
 }

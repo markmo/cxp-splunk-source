@@ -14,18 +14,20 @@ Issue the following commands in the shell:
 
     module upload --type source --name splunk --file ./build/libs/cxp-splunk-source-1.0.jar
     
-    stream create --name splunktest --definition "splunk --host=<host> --username=<username> --password=<password> --owner=<admin> --savedSearch=<saved-search> | log" --deploy
+    stream create --name splunktest --definition "splunk --host=<host> --username=<username> --password=<password> --owner=<admin> --savedSearch=<saved-search> --fixedDelay=<fixed-delay> --fixedDelayUnit=<fixed-delay-unit> | log" --deploy
 
 Module options include:
 
-    Option Name  Description                                                 Default    Type
-    -----------  ----------------------------------------------------------  ---------  ---------------------------------
-    host         the host name or IP address of the Splunk server            localhost  java.lang.String
-    owner        the owner of the Splunk namespace                           owner      java.lang.String
-    password     the password associated with the username                   password   java.lang.String
-    port         the TCP port number of the Splunk server                    8089       int
-    savedSearch  the name of the saved search in Splunk                      <none>     java.lang.String
-    username     the login name that has rights to receive data from Splunk  admin      java.lang.String
+    Option Name     Description                                                 Default    Type
+    --------------  ----------------------------------------------------------  ---------  ---------------------------------
+    fixedDelay      the fixed delay polling interval                            5          int
+    fixedDelayUnit  the unit of time for the polling interval                   HOURS      java.lang.String
+    host            the host name or IP address of the Splunk server            localhost  java.lang.String
+    owner           the owner of the Splunk namespace                           owner      java.lang.String
+    password        the password associated with the username                   password   java.lang.String
+    port            the TCP port number of the Splunk server                    8089       int
+    savedSearch     the name of the saved search in Splunk                      <none>     java.lang.String
+    username        the login name that has rights to receive data from Splunk  admin      java.lang.String
 
 Dependencies:
 
