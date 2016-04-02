@@ -16,6 +16,10 @@ Issue the following commands in the shell:
     
     stream create --name splunktest --definition "splunk --host=<host> --username=<username> --password=<password> --owner=<admin> --savedSearch=<saved-search> --fixedDelay=<fixed-delay> --fixedDelayUnit=<fixed-delay-unit> | log" --deploy
 
+To stream to a parquet file on HDFS:
+
+    stream create --name splunktest --definition "splunk --host=localhost --username=admin --password=password --owner=admin --savedSearch=www1_access_20160331PM --fixedDelay=5 --fixedDelayUnit=SECONDS | hdfs-dataset --format=parquet --fsUri='hdfs://localhost:9000'" --deploy
+
 Module options include:
 
     Option Name     Description                                                 Default    Type
